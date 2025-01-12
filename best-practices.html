@@ -1,0 +1,411 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>best-practices</title>
+    <meta name="description" content="Documentation for ReportHub">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/rh/assets/normalize.css?v=1736665566"
+        media="screen" />
+    <link rel="stylesheet" type="text/css" href="/rh/assets/doctave-style.css?v=1736665566"
+        media="screen" />
+    <link rel="stylesheet" type="text/css" href="/rh/assets/katex.css?v=1736665566" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/rh/assets/prism-ghcolors.css?v=1736665566"
+        media="screen" />
+
+    <script>
+        var DOCTAVE_TIMESTAMP = "1736665566";
+        var BASE_PATH = "/rh/";
+        var color = localStorage.getItem('doctave-color')
+
+        if (color === 'dark') {
+            document.getElementsByTagName('html')[0].classList.remove('light');
+            document.getElementsByTagName('html')[0].classList.add('dark');
+        } else {
+            document.getElementsByTagName('html')[0].classList.remove('dark');
+            document.getElementsByTagName('html')[0].classList.add('light');
+        }
+    </script>
+
+    
+    <link rel="icon" type="image/svg+xml" href="immap-logo.svg"/>
+    
+</head>
+
+<body>
+    <label for='menu-toggle-switch' class='menu-toggle-button'>
+        ☰
+    </label>
+    <input type="checkbox" id="menu-toggle-switch" value='0' />
+    <div class='page'>
+        <div class='header'>
+            <div class='logo'>
+                
+                <a href="/rh/">
+                    <img src="/rh/immap-logo.svg" alt='ReportHub logo'></img>
+                </a>
+                
+                <h2 class='project-name'>
+                    <a href="/rh/">
+                        ReportHub
+                    </a>
+                </h2>
+            </div>
+            <div class='search'>
+                <form id='search-form'>
+    <input type='text' id='search-box' autocomplete="off" placeholder="Search..."></input>
+    <span class='search-icon'>S</span>
+    <ul id='search-results'></ul>
+</form>
+
+            </div>
+            <div class='header-dummy-right'>
+            </div>
+        </div>
+        <div class='container'>
+            <div class='sidebar-left'>
+                <nav class='site-nav'>
+    <ul>
+        
+            <li><a href="/rh/get-started">get-started</a></li>
+            
+        
+            <li><a href="/rh/external-services">external-services</a></li>
+            
+        
+            <li><a class="active" href="/rh/best-practices">best-practices</a></li>
+            
+        
+            <li><a href="/rh/Models">README</a></li>
+            
+                <ul>
+    
+        <li><a href="/rh/Models/management">management</a></li>
+        
+    
+        <li><a href="/rh/Models/roles-and-permissions">roles-and-permissions</a></li>
+        
+    
+</ul>
+
+            
+        
+    </ul>
+    <span id='light-dark-mode-switch'>
+        <svg xmlns="http://www.w3.org/2000/svg" id="dark-mode-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" id="light-mode-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+        </svg>
+    </span>
+</nav>
+
+            </div>
+            <div class='doctave-content'>
+                <h2 id="best-practices-and-coding-guidelines">Best practices and coding guidelines</h2>
+<p>The following guidelines follow the PEP 8 style guide (https://www.python.org/dev/peps/pep-0008/) for general Python formatting rules.</p>
+<h3 id="styling">Styling</h3>
+<ul>
+<li>
+<p><em><strong>Naming Conventions</strong></em>:</p>
+<ul>
+<li>Use descriptive and meaningful names for variables, functions, classes, and modules.</li>
+<li>Variable and function names should be in lowercase with words separated by underscores (snake_case).</li>
+<li>Class names should follow the PascalCase convention (HelloWorld).</li>
+<li>Module names should be in lowercase with words separated by underscores.</li>
+<li>Use single leading underscores for non-public methods or attributes.</li>
+<li>Use double leading underscores for name mangling.
+Example of name mangling: </li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-Python">
+class MyClass:
+    def __init__(self):
+        self.__private_variable = 42
+
+        #The MyClass has a private variable named __private_variable 
+        # and a private method named __private_method(). 
+        # The double leading underscores in their names indicate that they are 
+        # intended to be used within the class and not accessed directly 
+        # from outside the class.
+
+    def __private_method(self):
+        return "This is a private method."
+
+    def public_method(self):
+        return self.__private_method()
+
+obj = MyClass()
+print(obj.public_method())  # Output: This is a private method.
+
+
+</code></pre>
+<ul>
+<li><em><strong>Naming routes and urls</strong></em>:</li>
+</ul>
+<pre><code class="language-python">app_name = 'projects'
+{% url 'projects:project-list' %}
+
+'projects/' -&gt; name = 'projects-list'
+'projects/create/' -&gt; name = 'projects-create'
+'projects/&lt;int:pk&gt;/' -&gt; name = 'projects-detail'
+'projects/&lt;int:pk&gt;/update/' -&gt;  name = 'projects-update'
+'projects/&lt;int:pk&gt;/delete/' -&gt; name = 'projects-delete';
+</code></pre>
+<ul>
+<li>
+<p><em><strong>REST Route conventions</strong></em>:
+| Verb      | URI                  | Action  | Route Name     |<br>
+| --------- | -------------------- | ------- | -------------- |
+| GET       | /projects              | index   | projects.index   |<br>
+| GET       | /projects/create       | create  | projects.create  |<br>
+| POST      | /projects              | store   | projects.store   |<br>
+| GET       | /projects/{photo}      | show    | projects.show    |<br>
+| GET       | /projects/{photo}/edit | edit    | projects.edit    |<br>
+| PUT/PATCH | /projects/{photo}      | update  | projects.update  |<br>
+| DELETE    | /projects/{photo}      | destroy | projects.destroy | </p>
+</li>
+<li>
+<p><em><strong>Indentation and Formatting</strong></em>:</p>
+<ul>
+<li>Follow the ruff linting and formating rule run <code>make lint</code> to check for errors</li>
+<li>Write clear, readable, and concise code. Avoid excessive nesting and complex logic. </li>
+</ul>
+</li>
+<li>
+<p><em><strong>Documentation</strong></em>:</p>
+<ul>
+<li>Provide clear and concise comments to explain the purpose and functionality of your code.</li>
+<li>Use docstrings to document classes, functions, and modules.</li>
+<li>Include parameter descriptions, return values, and examples whenever possible. </li>
+</ul>
+</li>
+<li>
+<p><em><strong>Error Handling</strong></em>:</p>
+<ul>
+<li>Handle exceptions gracefully. Use try-except blocks to catch and handle specific exceptions.</li>
+<li>Avoid using bare except statements. </li>
+<li>Catch specific exceptions whenever possible.</li>
+<li>Log error messages and stack traces to aid in debugging.</li>
+<li>Raise custom exceptions when appropriate to provide informative error messages.</li>
+</ul>
+</li>
+<li>
+<p><em><strong>Parameter typing</strong></em>: </p>
+<ul>
+<li>Use Type Hints:
+<ul>
+<li>Utilise Python's type hinting feature introduced in Python 3.5 and above to annotate the types of function parameters.</li>
+</ul>
+</li>
+<li>Annotate the return type of a function using the -&gt; syntax followed by the type.</li>
+<li>Specify Parameter Types:
+<ul>
+<li>Annotate the types of function parameters using the : syntax followed by the type.</li>
+<li>For example, def my_function(param1: int, param2: str) -&gt; bool:</li>
+<li>Use built-in types (e.g., int, str, list, dict) or import types from the typing module for more specific types (e.g., List, Dict, Tuple).</li>
+<li>Use Union Types:
+<ul>
+<li>When a parameter can accept multiple types, use union types to specify all possible types.</li>
+<li>Use the Union type from the typing module to annotate such parameters.
+For example: </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def process_data(data: Union[str, List[int]]) -&gt; None:
+</code></pre>
+<h3 id="code-complexity:">Code complexity:</h3>
+<ul>
+<li><em><strong>Cyclomatic complexity</strong></em> is a measure of the complexity and potential difficulty of understanding and maintaining a piece of code.
+<ul>
+<li>Aim to keep the cyclomatic complexity of individual functions and methods low.</li>
+<li>Reduce complexity by breaking down complex functions into smaller, more manageable functions with clear responsibilities.</li>
+<li>Use control flow statements (such as if, for, while) judiciously and avoid nested or deeply nested conditions.</li>
+<li>Consider refactoring complex code blocks into separate functions or classes to improve readability and maintainability.</li>
+</ul>
+</li>
+</ul>
+<p>Example of cyclomatic complexity:</p>
+<pre><code class="language-python">def print_matrix(matrix):
+    rows = len(matrix)
+    cols = len(matrix[0])
+
+    for i in range(rows):
+        for j in range(cols):
+            if matrix[i][j] % 2 == 0:
+                print("Even")
+            else:
+                if matrix[i][j] &gt; 0:
+                    print("Positive")
+                else:
+                    print("Negative")
+</code></pre>
+<p>The code above has a very high cyclomatic complexity and contributes to poor performance.</p>
+<h3 id="logging">Logging</h3>
+<ul>
+<li>Identify what information should be logged, such as errors, warnings, debugging details, or important events.
+<ul>
+<li>Establish the level of verbosity and decide when to log at each level (e.g., DEBUG, INFO, WARNING, ERROR, CRITICAL).</li>
+<li>Be cautious when logging sensitive data, such as passwords or user information.</li>
+</ul>
+</li>
+</ul>
+<p>Example - how to create a logger in Python: </p>
+<pre><code class="language-python">
+import logging
+
+# Create a logger object
+logger = logging.getLogger(__name__)
+
+# Set the logging level (optional)
+logger.setLevel(logging.DEBUG)
+# Log messages
+logger.debug('Debug message')
+logger.info('Info message')
+logger.warning('Warning message')
+logger.error('Error message')
+logger.critical('Critical message')
+
+</code></pre>
+<h3 id="security:">Security:</h3>
+<ul>
+<li>
+<p>Implement secure coding practices to prevent common vulnerabilities (e.g., SQL injection, cross-site scripting).</p>
+<ul>
+<li>Sanitise user input to prevent malicious code execution.</li>
+<li>Paramterise SQL queries.</li>
+<li>Use secure password hashing algorithms like bcrypt or Argon2 for user authentication.</li>
+<li>Ensure the protection of sensitive data by encrypting it when necessary.</li>
+</ul>
+</li>
+<li>
+<p>Be aware of the Top 10 OWASP (2017 - the list if frequently updated) while coding for web applications: </p>
+<ul>
+<li>Injection: This vulnerability refers to the ability for attackers to inject malicious code or commands into an application. Common examples include SQL injection, OS command injection, and LDAP injection.</li>
+<li>Broken Authentication: This vulnerability occurs when there are flaws in the authentication and session management processes, leading to unauthorized access, session hijacking, or account takeover.</li>
+<li>Sensitive Data Exposure: This vulnerability relates to the insecure handling or storage of sensitive data, such as passwords, credit card information, or personal data. It can occur due to weak encryption, inadequate access controls, or improper data handling.</li>
+<li>XML External Entities (XXE): This vulnerability arises when an application processes XML input insecurely, allowing attackers to read local files, perform remote code execution, or launch denial-of-service attacks.</li>
+<li>Broken Access Control: This vulnerability occurs when an application does not properly enforce access controls, allowing unauthorized users to access privileged functionality or perform actions they shouldn't be able to.</li>
+<li>Security Misconfigurations: This vulnerability arises from insecure configurations, such as default settings, unused components, unnecessary features, or misconfigured security controls, that can be exploited by attackers.</li>
+<li>Cross-Site Scripting (XSS): This vulnerability occurs when an application does not properly validate or sanitize user-supplied input, resulting in the execution of malicious scripts in users' browsers.</li>
+<li>Insecure Deserialization: This vulnerability arises when an application deserializes untrusted data without proper validation, which can lead to remote code execution or denial-of-service attacks.</li>
+<li>Using Components with Known Vulnerabilities: This vulnerability refers to the use of outdated or vulnerable components (such as libraries, frameworks, or plugins) that can be exploited by attackers to gain unauthorized access or execute malicious code.</li>
+<li>Insufficient Logging and Monitoring: This vulnerability occurs when an application does not generate or retain sufficient logs or fails to monitor the logs effectively, making it difficult to detect and respond to security incidents.</li>
+</ul>
+</li>
+</ul>
+<h3 id="django-specific-guidelines">Django specific guidelines</h3>
+<p>Follow the Django coding style guide. <a href="https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/">here</a>.</p>
+<ul>
+<li>Use Django's ORM (Object-Relational Mapping) for database access and avoid writing raw SQL queries whenever possible.</li>
+<li>Organize your Django project using the recommended project structure (https://docs.djangoproject.com/en/dev/intro/reusable-apps/).</li>
+<li>Utilize Django's built-in security features like CSRF protection and authentication middleware.</li>
+<li>Implement the principle of "Don't Repeat Yourself" (DRY) by reusing code through Django's class-based views, mixins, and template tags.</li>
+</ul>
+<h4 id="performance-:"><strong>Performance</strong>:</h4>
+<ul>
+<li>Optimize database queries by using select_related() and prefetch_related() to reduce the number of database hits.</li>
+<li>Use caching mechanisms (e.g., Django's caching framework or Redis) to improve performance for frequently accessed data.</li>
+<li>Minimize the number of queries executed within loops or recursion.</li>
+</ul>
+<h3 id="testing-and-quality-assurance-:"><strong>Testing and Quality Assurance</strong>:</h3>
+<ul>
+<li>Write automated tests for your Django application using Django's built-in testing framework (e.g., unit tests, integration tests, and functional tests).</li>
+<li>Aim for high test coverage to ensure the correctness and stability of your code.</li>
+<li>Use tools like Flake8, pylint, or mypy for static code analysis and to enforce coding standards.</li>
+</ul>
+<h3 id="git"><strong>GIT</strong></h3>
+<ul>
+<li>Use descriptive branch names: Choose meaningful and descriptive names for branches that indicate the purpose or feature being worked on. For example, use names like "feature/authentication" or "bugfix/user-registration" instead of generic names like "branch1" or "dev_branch."</li>
+<li>Create feature branches: Each new feature or task should have its own dedicated branch. This allows for isolated development, easy collaboration, and the ability to track changes related to specific features.</li>
+<li>Keep the main branch stable: The main branch (often called "master" or "main") should always contain stable and production-ready code. Avoid pushing incomplete or experimental code directly to the main branch.</li>
+<li>Merge branches with pull requests: When merging code from a feature branch to the main branch, use pull requests (or merge requests) for code reviews. This helps ensure that changes are reviewed by other team members before merging them into the main branch.</li>
+<li>Delete merged branches: Once a branch has been merged into the main branch or is no longer needed, delete it to keep the repository clean and avoid clutter.</li>
+</ul>
+
+            </div>
+            <div class='sidebar-right'>
+                <div class='page-nav' id='page-nav'>
+                    <p class='page-nav-header'>On this page</p>
+                    <ul>
+                        
+                        <li class='page-nav-level-2'>
+                            <a href='#best-practices-and-coding-guidelines'>Best practices and coding guidelines</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#styling'>Styling</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#code-complexity:'>Code complexity:</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#logging'>Logging</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#security:'>Security:</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#django-specific-guidelines'>Django specific guidelines</a>
+                        </li>
+                        
+                        <li class='page-nav-level-4'>
+                            <a href='#performance-:'>Performance:</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#testing-and-quality-assurance-:'>Testing and Quality Assurance:</a>
+                        </li>
+                        
+                        <li class='page-nav-level-3'>
+                            <a href='#git'>GIT</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class='wave-container'>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                    <path fill-opacity="0.35"
+                        d="M0,192L60,213.3C120,235,240,277,360,277.3C480,277,600,235,720,192C840,149,960,107,1080,122.7C1200,139,1320,213,1380,250.7L1440,288L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+                    </path>
+                    <path fill-opacity="0.5"
+                        d="M0,160L60,181.3C120,203,240,245,360,229.3C480,213,600,139,720,138.7C840,139,960,213,1080,229.3C1200,245,1320,203,1380,181.3L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+                    </path>
+                    <path fill-opacity="0.2"
+                        d="M0,224L60,197.3C120,171,240,117,360,117.3C480,117,600,171,720,186.7C840,203,960,181,1080,186.7C1200,192,1320,224,1380,240L1440,256L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+                    </path>
+                </svg>
+                <p>Powered by <a href='https://cli.doctave.com' target='_blank'>Doctave</a></p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/rh/assets/katex.js?v=1736665566"></script>
+    <script type="text/javascript" src="/rh/assets/mermaid.js?v=1736665566"></script>
+    <script type="text/javascript" src="/rh/assets/elasticlunr.js?v=1736665566"></script>
+    <script type="text/javascript" src="/rh/assets/prism.js?v=1736665566"></script>
+    <script type="text/javascript" src="/rh/assets/doctave-app.js?v=1736665566"></script>
+
+    
+</body>
+
+</html>

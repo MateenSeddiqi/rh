@@ -1,0 +1,232 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>clean-architecture</title>
+    <meta name="description" content="Documentation for ReportHub">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/rh/assets/normalize.css?v=1736665566"
+        media="screen" />
+    <link rel="stylesheet" type="text/css" href="/rh/assets/doctave-style.css?v=1736665566"
+        media="screen" />
+    <link rel="stylesheet" type="text/css" href="/rh/assets/katex.css?v=1736665566" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/rh/assets/prism-ghcolors.css?v=1736665566"
+        media="screen" />
+
+    <script>
+        var DOCTAVE_TIMESTAMP = "1736665566";
+        var BASE_PATH = "/rh/";
+        var color = localStorage.getItem('doctave-color')
+
+        if (color === 'dark') {
+            document.getElementsByTagName('html')[0].classList.remove('light');
+            document.getElementsByTagName('html')[0].classList.add('dark');
+        } else {
+            document.getElementsByTagName('html')[0].classList.remove('dark');
+            document.getElementsByTagName('html')[0].classList.add('light');
+        }
+    </script>
+
+    
+    <link rel="icon" type="image/svg+xml" href="immap-logo.svg"/>
+    
+</head>
+
+<body>
+    <label for='menu-toggle-switch' class='menu-toggle-button'>
+        ☰
+    </label>
+    <input type="checkbox" id="menu-toggle-switch" value='0' />
+    <div class='page'>
+        <div class='header'>
+            <div class='logo'>
+                
+                <a href="/rh/">
+                    <img src="/rh/immap-logo.svg" alt='ReportHub logo'></img>
+                </a>
+                
+                <h2 class='project-name'>
+                    <a href="/rh/">
+                        ReportHub
+                    </a>
+                </h2>
+            </div>
+            <div class='search'>
+                <form id='search-form'>
+    <input type='text' id='search-box' autocomplete="off" placeholder="Search..."></input>
+    <span class='search-icon'>S</span>
+    <ul id='search-results'></ul>
+</form>
+
+            </div>
+            <div class='header-dummy-right'>
+            </div>
+        </div>
+        <div class='container'>
+            <div class='sidebar-left'>
+                <nav class='site-nav'>
+    <ul>
+        
+            <li><a href="/rh/get-started">get-started</a></li>
+            
+        
+            <li><a href="/rh/external-services">external-services</a></li>
+            
+        
+            <li><a href="/rh/best-practices">best-practices</a></li>
+            
+        
+            <li><a href="/rh/Models">README</a></li>
+            
+                <ul>
+    
+        <li><a href="/rh/Models/management">management</a></li>
+        
+    
+        <li><a href="/rh/Models/roles-and-permissions">roles-and-permissions</a></li>
+        
+    
+</ul>
+
+            
+        
+    </ul>
+    <span id='light-dark-mode-switch'>
+        <svg xmlns="http://www.w3.org/2000/svg" id="dark-mode-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
+        </svg>
+
+        <svg xmlns="http://www.w3.org/2000/svg" id="light-mode-icon" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd" />
+        </svg>
+    </span>
+</nav>
+
+            </div>
+            <div class='doctave-content'>
+                <h2 id="what-is-clean-architecture-in-django?">What is clean architecture in Django?</h2>
+<p>Clean Architecture in the context of Django web applications is an architectural pattern 
+that emphasizes the separation of concerns and the independence of the core business logic from the web framework and other external dependencies. It aims to create a modular and maintainable codebase for web applications that is flexible, testable, and scalable.</p>
+<p>Benefits of applying Clean Architecture principles in Django web applications include:</p>
+<p>-&nbsp; <strong>Modularity and Maintainability</strong> By separating the core business logic from the web framework, Clean Architecture promotes modularity and maintainability. Changes in the web framework or user interface do not impact the core domain logic, making it easier to evolve and maintain the codebase over time.</p>
+<p>-&nbsp; <strong>Testability</strong>: Clean Architecture enables easier testing of the core business logic by isolating it from external dependencies. Business rules and use cases can be thoroughly tested without relying on the web framework or other infrastructure components, leading to more reliable and robust tests.</p>
+<p>-&nbsp; <strong>Flexibility and Adaptability</strong>: The clean separation of concerns and the independence from external frameworks provide flexibility and adaptability. It becomes easier to switch or upgrade the web framework, integrate with different third-party services or APIs, or even transition to different deployment environments.</p>
+<p>-&nbsp; <strong>Scalability</strong>: Clean Architecture promotes the creation of loosely coupled components and clearly defined boundaries between layers. This makes it easier to scale the application by introducing additional infrastructure components or splitting functionalities into microservices without impacting the core business logic.</p>
+<p>-&nbsp; <strong>Reduced Technical Debt</strong>: By following Clean Architecture principles, the codebase is structured in a way that minimizes technical debt. The separation of concerns and the clear organization of modules make the codebase easier to understand and maintain, reducing the accumulation of unnecessary complexity over time.</p>
+<p>-&nbsp; <strong>Focus on Domain Logic</strong>: Clean Architecture encourages a focus on the core domain logic and business rules of the web application. The separation of the core domain from the web framework allows developers to concentrate on modeling the problem domain effectively and implementing the core features without being constrained by the specifics of the web framework.
+By adopting Clean Architecture in Django web applications, developers can achieve a codebase that is more modular, maintainable, testable, and adaptable. The architecture helps in creating web applications with a clear separation of concerns, a focus on business logic, and the ability to evolve and scale as the application requirement</p>
+<h2 id="example-of-project-structure">Example of project structure</h2>
+<pre><code class="language-commandline">rh/
+├── core/
+│   ├── entities/
+│   │   ├── __init__.py
+│   │   └── models.py         # Domain models or entities
+│   ├── usecases/
+│   │   ├── __init__.py
+│   │   ├── create_organisations.py   # Use case implementation
+│   │   └── get_organisations.py   # Use case implementation
+│   └── interfaces/
+│       ├── __init__.py
+│       └── repositories.py    # Repository interfaces
+├── repositories/
+│   ├── __init__.py
+│   └── organisations_repository.py   # Repository implementation
+├── interfaces/
+│   ├── __init__.py
+│   └── web/
+│       ├── __init__.py
+│       ├── controllers.py     # Controllers or API handlers
+│       └── rh/                # Django app (RH)
+│           ├── __init__.py
+│           ├── models.py      # Django models
+│           ├── views.py       # Django views or viewsets
+│           ├── serializers.py # Django serializers
+│           └── urls.py        # Django app URLs
+└── settings.py
+</code></pre>
+<ul>
+<li>
+<p><strong>rh</strong>: This is the main directory representing the root of your Django project. It contains all the code and configuration related to the "RH" web application.</p>
+</li>
+<li>
+<p><strong>core</strong>: This directory contains the core business logic of the application. It encapsulates the most essential components of the application's domain.</p>
+<ul>
+<li><strong>entities</strong>: This subdirectory holds the domain models or entities. These models represent the core concepts and entities of your application's domain. Entities are typically implemented as classes or data structures that contain attributes and methods related to the domain-specific data and behaviors.</li>
+<li><strong>usecases</strong>: Here, you'll find the implementations of the use cases or application-specific operations. Each use case represents a specific action or workflow of your application. Examples include creating a new object or removing it.</li>
+<li><strong>interfaces</strong>: This subdirectory includes the repository interfaces that define the contracts for data access and persistence in the core. These interfaces serve as a bridge between the core and the repositories. </li>
+</ul>
+</li>
+<li>
+<p><strong>repositories</strong>: The repositories directory contains the implementations of the repository interfaces defined in the core.interfaces package. The organisation_repository.py file represents a repository implementation responsible for handling data access and persistence operations for organisations.</p>
+</li>
+<li>
+<p><strong>interfaces</strong>: This directory represents the web interface layer of your application, specifically for the web-based part of the app. </p>
+<ul>
+<li><strong>web</strong>: The web subdirectory contains the code related to the web interface layer.
+<ul>
+<li><strong>controllers</strong>: The controllers.py file holds the controllers or API handlers responsible for handling requests and responses in the web interface layer. It acts as an intermediary between the web framework and the core use cases.</li>
+<li><strong>rh</strong>: This subdirectory represents the Django app named "RH" within the web interface layer.</li>
+<li><strong>models</strong>: The models.py file contains the Django models that define the data structure and relationships for the "RH" app.</li>
+<li><strong>views</strong>: The views.py file holds the Django views or viewsets that handle the logic for rendering templates or handling API requests for the "RH" app.</li>
+<li><strong>serializers</strong>: The serializers.py file defines the serializers for the Django models in the "RH" app. Serializers are used for converting complex data structures, such as models, into JSON or other formats.</li>
+<li><strong>urls</strong>: The urls.py file contains the URL configuration for the "RH" app, mapping URLs to the corresponding views or viewsets.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>settings.py</strong>: This file represents the Django project's settings file, which includes various configurations for the project.</p>
+</li>
+</ul>
+
+            </div>
+            <div class='sidebar-right'>
+                <div class='page-nav' id='page-nav'>
+                    <p class='page-nav-header'>On this page</p>
+                    <ul>
+                        
+                        <li class='page-nav-level-2'>
+                            <a href='#what-is-clean-architecture-in-django?'>What is clean architecture in Django?</a>
+                        </li>
+                        
+                        <li class='page-nav-level-2'>
+                            <a href='#example-of-project-structure'>Example of project structure</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+            <div class='wave-container'>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                    <path fill-opacity="0.35"
+                        d="M0,192L60,213.3C120,235,240,277,360,277.3C480,277,600,235,720,192C840,149,960,107,1080,122.7C1200,139,1320,213,1380,250.7L1440,288L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+                    </path>
+                    <path fill-opacity="0.5"
+                        d="M0,160L60,181.3C120,203,240,245,360,229.3C480,213,600,139,720,138.7C840,139,960,213,1080,229.3C1200,245,1320,203,1380,181.3L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+                    </path>
+                    <path fill-opacity="0.2"
+                        d="M0,224L60,197.3C120,171,240,117,360,117.3C480,117,600,171,720,186.7C840,203,960,181,1080,186.7C1200,192,1320,224,1380,240L1440,256L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z">
+                    </path>
+                </svg>
+                <p>Powered by <a href='https://cli.doctave.com' target='_blank'>Doctave</a></p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/rh/assets/katex.js?v=1736665566"></script>
+    <script type="text/javascript" src="/rh/assets/mermaid.js?v=1736665566"></script>
+    <script type="text/javascript" src="/rh/assets/elasticlunr.js?v=1736665566"></script>
+    <script type="text/javascript" src="/rh/assets/prism.js?v=1736665566"></script>
+    <script type="text/javascript" src="/rh/assets/doctave-app.js?v=1736665566"></script>
+
+    
+</body>
+
+</html>
